@@ -5,7 +5,9 @@ defmodule Pluggy.User do
 	alias Pluggy.User
 
 	def get do
-		Postgrex.query!(DB, "SELECT id, mail, username FROM users", [], pool: DBConnection.Poolboy)
+		data = Postgrex.query!(DB, "SELECT id, username FROM users", [], pool: DBConnection.Poolboy).rows
+		Enum.map(data, fn x -> to_struct([x]) end)
+		|> to_json
 	end
 
 	def get(id) do
@@ -16,5 +18,9 @@ defmodule Pluggy.User do
 
 	def to_struct([[id, username]]) do
 		%User{id: id, username: username}
+	end
+
+	def to_json(data) do
+		Poison.encode(data, pretty: true)
 	end
 end
