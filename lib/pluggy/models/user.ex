@@ -5,12 +5,16 @@ defmodule Pluggy.User do
 	alias Pluggy.User
 
 	def get(id) do
-		Postgrex.query!(DB, "SELECT id, username FROM users WHERE id = $1 LIMIT 1", [id],
-        pool: DBConnection.Poolboy
-      ).rows |> to_struct
+		Postgrex.query!(DB, "SELECT id, username FROM users WHERE id = $1 LIMIT 1", [String.to_integer(id)], pool: DBConnection.Poolboy).rows 
+		|> to_struct
+		|> to_json
 	end
 
 	def to_struct([[id, username]]) do
 		%User{id: id, username: username}
+	end
+
+	def to_json(data) do
+		Poison.encode!(data, pretty: true)
 	end
 end

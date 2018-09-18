@@ -1,7 +1,7 @@
 defmodule Pluggy.Router do
   use Plug.Router
 
-  alias Pluggy.FruitController
+  # alias Pluggy.FruitController
   alias Pluggy.UserController
   alias Pluggy.PageController
 
@@ -24,7 +24,9 @@ defmodule Pluggy.Router do
   plug(:dispatch)
 
   # ---API---
-  
+  get "/users/:id",        do: UserController.index(conn, id)
+
+  # get "/api/users/:id",    do: UserController.get_user(conn, id)
 
   # ---NEW---
   get "/login",            do: PageController.index(conn)

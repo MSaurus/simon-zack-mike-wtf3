@@ -2,9 +2,10 @@ defmodule Pluggy.UserController do
 
 	import Pluggy.Template, only: [render: 2]
 	import Plug.Conn, only: [send_resp: 3]
+	alias Pluggy.User
 
-	def index(conn) do
-		send_resp(conn, 200, render("fruits/index", []))
+	def index(conn, _id) do
+		send_resp(conn, 200, render("/users.html", []))
 	end
 
 	def login(conn, params) do
@@ -48,6 +49,12 @@ defmodule Pluggy.UserController do
 		else
 			redirect(conn, "/fruit")
 		end
+	end
+
+	def get_user(conn, id) do
+		var = User.get(id)
+		IO.inspect(var)
+		send_resp(conn, 200, render("/users.html", user: var))
 	end
 
 	defp redirect(conn, url), do: Plug.Conn.put_resp_header(conn, "location", url) |> send_resp(303, "")

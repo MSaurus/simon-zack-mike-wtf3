@@ -94,7 +94,19 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\n\n//# sourceURL=webpack:///./src/index.ts?");
+eval("\nvar __importStar = (this && this.__importStar) || function (mod) {\n    if (mod && mod.__esModule) return mod;\n    var result = {};\n    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];\n    result[\"default\"] = mod;\n    return result;\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar Users = __importStar(__webpack_require__(/*! ./users/index */ \"./src/users/index.ts\"));\nwindow.addEventListener(\"load\", function () {\n    console.log(\"Sending Ajax request\");\n    Users.send_ajax();\n});\n\n\n//# sourceURL=webpack:///./src/index.ts?");
+
+/***/ }),
+
+/***/ "./src/users/index.ts":
+/*!****************************!*\
+  !*** ./src/users/index.ts ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nfunction send_ajax() {\n    console.log(\"Entering send_ajax function\");\n    // let id = window.location.href.substr(window.location.href.lastIndexOf(\"/\") + 1)\n    // let url = `http://localhost:3000/api/users/${id}`\n    // console.log(id + \"\\n\" + url)\n    // AJAX.get(url)\n    // .then( response => {\n    //     console.log(response)\n    // })\n}\nexports.send_ajax = send_ajax;\n\n\n//# sourceURL=webpack:///./src/users/index.ts?");
 
 /***/ })
 

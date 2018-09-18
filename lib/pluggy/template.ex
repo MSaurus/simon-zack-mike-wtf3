@@ -2,9 +2,9 @@ defmodule Pluggy.Template do
   def render(file, data \\ [], layout \\ true) do
   	case layout do
     	true -> 
-			EEx.eval_file("templates/layout.eex", template: EEx.eval_file("templates/#{file}.eex", data))
+				EEx.eval_file("priv/static/#{file}", data)
     	false -> 
-    		EEx.eval_file("templates/#{file}.eex", data)
+    		EEx.eval_file("priv/static/#{file}", data)
     end
   end
 end
