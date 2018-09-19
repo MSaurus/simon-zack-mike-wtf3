@@ -20,7 +20,15 @@ export function get(url : string) : Promise<User>{
 }
 
 export interface User {
-    username: string;
-    id: number;
+    data?: (DataEntity)[] | [];
+  }
+export interface DataEntity {
+user_info: UserInfo;
 }
+export interface UserInfo {
+username: string;
+mail: string;
+id: number;
+}
+  
   
