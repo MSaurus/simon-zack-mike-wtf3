@@ -22,9 +22,10 @@ defmodule Pluggy.Router do
   plug(Plug.Parsers, parsers: [:urlencoded, :multipart])
   plug(:match)
   plug(:dispatch)
-
+  
   # ---API---
   get "/users/:id",        do: UserController.index(conn, id)
+  get "/api/users/:id",    do: UserController.get_user(conn, id)
 
   # get "/api/users/:id",    do: UserController.get_user(conn, id)
 
