@@ -9,9 +9,12 @@ export function send_ajax() {
     console.log(id + "\n" + url)
 
     AJAX.get(url)
-    .then( response => {
-        let h = document.getElementById("greetings")!
-        h.innerHTML += ` ${response['username']}`
+    // ask David
+    .then( (response : AJAX.User) => {
+        let user = document.getElementById("user")!
+        let id = document.getElementById("id")!
+        user.innerHTML += response.username
+        id.innerHTML += response.id
     })
     .catch( response => {
         console.log(response)

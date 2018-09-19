@@ -9,7 +9,8 @@
 </head>
 <body>
     <div>
-    <h1 id="greetings">Hello</h1>
+    <h1 id="user">User: </h1>
+    <h1 id="id">ID: </h1>
     </div>
     <script type="text/javascript" src="/main.js"></script>
 </body>
