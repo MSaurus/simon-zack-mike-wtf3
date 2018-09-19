@@ -25,7 +25,7 @@ defmodule Pluggy.Router do
   
   # ---API---
   get "/users/:id",        do: UserController.index(conn, id)
-  get "/ api/users/:id",   do: UserController.get_user(conn, id)
+  get "/api/users/:id",   do: UserController.get_user(conn, id)
 
   get "/users",           do: UserController.index(conn)
   get "/api/users",        do: UserController.get_users(conn)
