@@ -28,7 +28,8 @@ defmodule Pluggy.MixProject do
       {:postgrex, "~> 0.13.5"},
       {:poolboy, "1.5.1"},
       {:bcrypt_elixir, "~> 1.0"},
-      {:poison, "~> 3.1"}
+      {:poison, "~> 3.1"},
+      {:httpoison, "~> 1.3"}
     ]
   end
 end
