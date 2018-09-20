@@ -44,6 +44,7 @@ export interface User {
     data: Data 
 }
 
+
 export interface Data {
     user_info: UserInfo
 }
