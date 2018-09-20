@@ -1,13 +1,11 @@
 import * as AJAX from "../ajax/index"
 
 export function send_ajax() {
-    console.log("Entering send_ajax function")
 
     let url = ""
     
     if (window.location.href != "http://localhost:3000/users") 
     {
-        console.log("get_one")
         let id = window.location.href.substr(window.location.href.lastIndexOf("/") + 1) 
         url = `http://localhost:3000/api/users/${id}`
         console.log(url)
@@ -31,12 +29,10 @@ export function send_ajax() {
     } 
     else 
     {
-        console.log("get_all")
         url = `http://localhost:3000/api/users`
         AJAX.get_all(url)
         // ask David
         .then( (response : AJAX.Users) => {
-            console.log(response.data)
             if (response.data == null || undefined) {
                 response.data = []
             }

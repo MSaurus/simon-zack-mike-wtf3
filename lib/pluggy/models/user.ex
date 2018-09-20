@@ -5,10 +5,9 @@ defmodule Pluggy.User do
 	alias Pluggy.User
 
 	def get do
-		data = Postgrex.query!(DB, "SELECT id, username, mail FROM users", [], pool: DBConnection.Poolboy).rows
-		to_struct_list(data)
+		Postgrex.query!(DB, "SELECT id, username, mail FROM users", [], pool: DBConnection.Poolboy).rows
+		|> to_struct_list
 		|> to_json
-		#Enum.map(data, fn x -> to_struct([x]) end) |> to_json
 	end
 
 	def get(id) do
@@ -21,12 +20,8 @@ defmodule Pluggy.User do
 		%User{user_info: %{id: id, username: username, mail: mail}}
 	end
 
-	def to_struct_list(rows) do
-		for [id, username, mail] <- rows do
-			%User{user_info: %{id: id, username: username, mail: mail}}
-		end
-		
-    end
+	def to_struct_list(rows), do: for [id, username, mail] <- rows, do: %User{user_info: %{id: id, username: username, mail: mail}}
+
 
 	def to_json(data) do
 		Poison.encode!(%{data: data}, pretty: true)
